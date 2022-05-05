@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +6,26 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'ng5-complete-guide';
+  accounts = [
+    {
+      name: 'Master Account',
+      status: 'active'
+    },
+    {
+      name: 'Test Account',
+      status: 'inactive'
+    },
+    {
+      name: 'Hidden Account',
+      status: 'unknown'
+    }
+  ];
+
+  onStatusChanged(updateInfo: { id: number, newStatus: string }) {
+    this.accounts[updateInfo.id].status = updateInfo.newStatus;
+  }
+
+  onAccountAdded(newAccount: { name: string, status: string }) {
+    this.accounts.push(newAccount);
+  }
 }
